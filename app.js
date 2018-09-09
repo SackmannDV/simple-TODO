@@ -1,11 +1,13 @@
-const yargs = require('yargs').argv;
+const argv = require('./config/yargs').argv;
 const colors = require('colors');
+const {createNewTask} = require('./src/modules')
 
-let comando = yargs._[0];
+let comando = argv._[0];
 
 switch (comando) {
     case 'crear':
-        
+        let toCreate = createNewTask(argv.descripcion);
+        console.log(toCreate);
         break;
 
     case 'listar':
