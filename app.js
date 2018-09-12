@@ -20,6 +20,6 @@ switch (comando) {
 
     default:
         console.log(`${colors.red(comando)} no es un comando reconocible. 
-                    Para mas informavcion utilize "--help"`)
+                    Para mas informacion utilize "--help"`)
         break;
 }

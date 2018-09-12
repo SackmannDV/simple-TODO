@@ -15,8 +15,3 @@ const createNewTask = (desc) => {
 module.exports = {
     createNewTask
 }
-
-fs.writeFile(`../.saveTasks/TodoList`, todoList, (err) => {
-    if (err) throw err;
-    console.log(`Se a añadido la tarea`);
-})
