@@ -12,7 +12,18 @@ const writeTodo = (forSave) => {
       });
 }
 
+const readTodo = () => {
+    try {
+        todoList = require('../.saveTasks/todoList.json');
+    } catch (error) {
+        todoList = [];
+    }
+}
+
 const createNewTask = (desc) => {
+    
+    readTodo();
+
     let todo = {
         desc,
         completado: false
@@ -24,7 +35,12 @@ const createNewTask = (desc) => {
     return todo;
 }
 
+const getTodo = () => {
+    readTodo();
+    return todoList;
+}
+
 module.exports = {
     createNewTask,
-    writeTodo
+    getTodo
 }

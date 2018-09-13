@@ -1,6 +1,6 @@
 const argv = require('./config/yargs').argv;
 const colors = require('colors');
-const {createNewTask} = require('./src/modules')
+const {createNewTask, getTodo} = require('./src/modules')
 
 let comando = argv._[0];
 
@@ -11,11 +11,20 @@ switch (comando) {
         break;
 
     case 'listar':
-        
+        let list = getTodo();
+        for(let tarea of list) {
+            console.log('============================')
+            console.log(colors.bgWhite.black(tarea.desc))
+            if (tarea.completado === false) {
+                console.log('No completado'.red);
+            } else {
+                console.log('Tarea finalizada'.green)
+            }
+        }
         break;
 
     case 'actualizar':
-    
+
         break;
 
     default:
