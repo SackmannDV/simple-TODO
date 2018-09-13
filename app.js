@@ -15,11 +15,10 @@ switch (comando) {
         break;
 
     case 'actualizar':
-        
+    
         break;
 
     default:
-        console.log(`${colors.red(comando)} no es un comando reconocible. 
-                    Para mas informacion utilize "--help"`)
+        console.log(`${colors.red(comando)} no es un comando reconocible.\nPara mas informacion utilize "--help"`)
         break;
 }
