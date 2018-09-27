@@ -1,13 +1,12 @@
 const argv = require('./config/yargs').argv;
 const colors = require('colors');
-const {createNewTask, getTodo, updateTask} = require('./src/modules')
+const {createNewTask, getTodo, updateTask, deleteTask} = require('./src/modules')
 
 let comando = argv._[0];
 
 switch (comando) {
     case 'crear':
         let toCreate = createNewTask(argv.descripcion);
-        console.log(toCreate);
         break;
 
     case 'listar':
@@ -24,8 +23,12 @@ switch (comando) {
         break;
 
     case 'actualizar':
-        let act = updateTask(argv.descripcion, argv.completado);
-        console.log(act);
+        updateTask(argv.descripcion, argv.completado);
+        break;
+
+    case 'borrar':
+        let borrar = deleteTask(argv.descripcion)
+        console.log(borrar)
         break;
 
     default:
