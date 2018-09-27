@@ -6,19 +6,28 @@ let comando = argv._[0];
 
 switch (comando) {
     case 'crear':
-        let toCreate = createNewTask(argv.descripcion);
+        createNewTask(argv.descripcion);
         break;
 
     case 'listar':
         let list = getTodo();
-        for(let tarea of list) {
-            console.log('============================')
-            console.log(colors.bgWhite.black(tarea.desc))
-            if (tarea.completado === false) {
-                console.log('No completado'.red);
-            } else {
-                console.log('Tarea finalizada'.green)
+        if(argv.c === true) {
+            list = list.filter(tarea => tarea.completado === true);
+            for(let tarea of list) {
+                console.log('============================')
+                console.log(colors.bgWhite.black(tarea.desc))
             }
+        } else {
+            for(let tarea of list) {
+                console.log('============================')
+                console.log(colors.bgWhite.black(tarea.desc))
+                if (tarea.completado === false) {
+                    console.log('No completado'.red);
+                } else {
+                    console.log('Tarea finalizada'.green)
+                }
+            }
+        
         }
         break;
 
@@ -27,13 +36,14 @@ switch (comando) {
         break;
 
     case 'borrar':
-        let borrar = deleteTask(argv.descripcion)
-        console.log(borrar)
+        if(deleteTask(argv.descripcion) === true){
+            console.log(`La tarea fue eliminada`);
+        } else {
+            console.log(`No se a encontrado la tarea "${colors.green(argv.descripcion)}"`);
+        }
         break;
 
     default:
         console.log(`${colors.red(comando)} no es un comando reconocible.\nPara mas informacion utilize "--help"`)
         break;
 }
-
-console.log( argv )
