@@ -35,6 +35,25 @@ const createNewTask = (desc) => {
     return todo;
 }
 
+const updateTask = (desc, stat) => {
+    readTodo();
+    
+    let index = todoList.findIndex(tarea => tarea.desc === desc)
+    console.log(index);
+    if(index >= 0) {
+        if(stat == 'true'){
+            todoList[index].completado = true;   
+        } else if(stat == 'false') {
+            todoList[index].completado = false;
+        }
+        writeTodo(todoList);
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 const getTodo = () => {
     readTodo();
     return todoList;
@@ -42,5 +61,6 @@ const getTodo = () => {
 
 module.exports = {
     createNewTask,
-    getTodo
+    getTodo,
+    updateTask
 }

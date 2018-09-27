@@ -1,6 +1,6 @@
 const argv = require('./config/yargs').argv;
 const colors = require('colors');
-const {createNewTask, getTodo} = require('./src/modules')
+const {createNewTask, getTodo, updateTask} = require('./src/modules')
 
 let comando = argv._[0];
 
@@ -24,10 +24,13 @@ switch (comando) {
         break;
 
     case 'actualizar':
-
+        let act = updateTask(argv.descripcion, argv.completado);
+        console.log(act);
         break;
 
     default:
         console.log(`${colors.red(comando)} no es un comando reconocible.\nPara mas informacion utilize "--help"`)
         break;
 }
+
+console.log( argv )
